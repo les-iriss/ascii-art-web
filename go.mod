@@ -1,3 +1,3 @@
-module ascii_web
+module ascii-art-web
 
 go 1.22.3
