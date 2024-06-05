@@ -1,13 +1,13 @@
 package main
 
 import (
-	"ascii-art-web/pkg/split_file"
 	"fmt"
+	fs "ascii-art-web/pkg/fs"
 )
 
 func main() {
-	var text, banner = "hello", "standard"
-	font := split_file.SplitFile("banners/"+ banner + ".txt")
-	fmt.Println(text,font)
+	var text, banner = "hello\\nword!\\nhello\\nzone01", "standard"
+	ascii_fs := fs.AsciiArtFs(text, banner)
+	fmt.Print(ascii_fs)
 }
 
