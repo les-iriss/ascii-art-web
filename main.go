@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	var text, banner = "hello\\nword!\\nhello\\nzone01", "standard"
+	var text, banner = "\\nhello\\n\\nman\\n", "standard"
 	ascii_fs := fs.AsciiArtFs(text, banner)
 	fmt.Print(ascii_fs)
 }

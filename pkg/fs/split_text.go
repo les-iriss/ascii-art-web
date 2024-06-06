@@ -13,6 +13,7 @@ func SplitText(text string) []string {
 			break
 		}
 		words = append(words,new_text[:index])
+		words = append(words, "\\n")
 		new_text = new_text[index+2:]
 	}
 	words = append(words,new_text)
