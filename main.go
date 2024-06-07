@@ -1,13 +1,14 @@
 package main
 
 import (
+	controller "ascii-art-web/controllers"
 	"fmt"
-	fs "ascii-art-web/pkg/fs"
+	"net/http"
 )
 
 func main() {
-	var text, banner = "\\nhello\\n\\nman\\n", "standard"
-	ascii_fs := fs.AsciiArtFs(text, banner)
-	fmt.Print(ascii_fs)
+	mux := http.NewServeMux()
+	mux.HandleFunc("/", controller.RootHandler)
+	fmt.Println("server running in 'http://localhost:8000'")
+	http.ListenAndServe(":8000", mux)
 }
-

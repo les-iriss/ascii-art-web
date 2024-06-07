@@ -1,0 +1,12 @@
+{{define "form"}}
+<form method="POST" action="/ascii-art">
+   	<textarea name="text" rows="5" cols="50" id="text" placeholder="Enter your text..."></textarea>
+	<br />
+	<select id="banner" name="banner">
+		<option value="standard">standard</option>
+		<option value="shadow">shadow</option>
+		<option value="thinkertoy">thinkertoy</option>
+	</select>
+   	<button type="submit">SEND</button>
+</form>
+{{ end }}

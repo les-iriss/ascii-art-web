@@ -1,0 +1,18 @@
+{{ define "base" }}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ascii-art-web</title>
+</head>
+<body>
+	<center>
+		<h1>ASCII-ART-WEB</h1>
+		{{ block "form" . }} {{ end }}
+	</center>
+	<br /><hr /><br />
+	<div class="banner">
+			<pre>{{ .Result }}</pre>
+	</div>
+</body>
+</html>
+{{ end }}
