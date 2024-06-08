@@ -16,7 +16,7 @@ func SplitFile(file_name string) [][]string {
 	}
 	// convert content from bytes to string
 	txt := string(content)
-	txt = strings.ReplaceAll(txt, "\r","")
+	txt = strings.ReplaceAll(txt, "\r", "")
 	// split content file to chars
 	slice := strings.Split(txt[1:], "\n\n")
 	// split chars to lines

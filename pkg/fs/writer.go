@@ -1,12 +1,8 @@
 package fs
 
-import (
-	"fmt"
-)
-
 func Writer(words []string, font [][]string) string {
 	var result string
-	var last_line = false
+	last_line := false
 	for _, word := range words {
 		if word == "\\n" {
 			result += "\n"
@@ -19,8 +15,7 @@ func Writer(words []string, font [][]string) string {
 		for i := 0; i < 8; {
 			for _, char := range word {
 				if char > '~' || char < ' ' {
-					fmt.Println("400 bad request!")
-					return ""
+					continue
 				}
 				result += font[int(char)-32][i]
 			}

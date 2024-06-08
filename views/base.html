@@ -1,17 +1,20 @@
 {{ define "base" }}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>ascii-art-web</title>
 </head>
 <body>
 	<center>
 		<h1>ASCII-ART-WEB</h1>
+		<hr /><br />
 		{{ block "form" . }} {{ end }}
 	</center>
 	<br /><hr /><br />
 	<div class="banner">
-			<pre>{{ .Result }}</pre>
+		<pre>{{ .Result }}</pre>
 	</div>
 </body>
 </html>

@@ -1,9 +1,10 @@
 package main
 
 import (
-	controller "ascii-art-web/controllers"
 	"fmt"
 	"net/http"
+
+	controller "ascii-art-web/controllers"
 )
 
 func main() {
