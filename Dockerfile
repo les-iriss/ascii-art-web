@@ -7,9 +7,9 @@ COPY go.mod .
 COPY main.go .
 RUN go mod tidy
 
-# COPY pkg .
-# COPY controllers .
-# COPY views .
+COPY pkg /app/pkg
+COPY controllers /app/controllers
+COPY views /app/views
 
 
 
