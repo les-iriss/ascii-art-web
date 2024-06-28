@@ -40,6 +40,8 @@ func RootHandler(w http.ResponseWriter, r *http.Request) {
 	default:
 		error.HandleError(w, r, error.Error{Code: 404, Message: "Page not found!"})
 	}
+	w.WriteHeader(http.StatusOK)
+
 }
 
 func postRequest(w http.ResponseWriter, r *http.Request, data *Data) {
@@ -80,5 +82,5 @@ func getPage(w http.ResponseWriter, r *http.Request, data *Data) {
 		error.HandleError(w, r, error.Error{Code: http.StatusInternalServerError, Message: err.Error()})
 		return
 	}
-	// w.WriteHeader(http.StatusOK)
+	w.WriteHeader(http.StatusOK)
 }
