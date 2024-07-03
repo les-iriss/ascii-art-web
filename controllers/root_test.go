@@ -10,7 +10,7 @@ import (
 )
 
 func TestGetPage(t *testing.T) {
-	server := httptest.NewServer(http.HandlerFunc(GetPage))
+	server := httptest.NewServer(http.HandlerFunc(GetRequest))
 	defer server.Close()
 	res, err := http.Get(server.URL)
 	if err != nil {

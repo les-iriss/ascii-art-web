@@ -9,13 +9,13 @@ import (
 )
 
 func main() {
-	
-
-	http.HandleFunc("/", controller.GetPage)
+	http.HandleFunc("/", controller.GetRequest)
 	http.HandleFunc("/ascii-art", controller.PostRequest)
-    fmt.Println("server running on 'http://localhost:8000'")
-    if err := http.ListenAndServe(":8000", nil); err != nil {
-        log.Fatalf("failed to start server: %v", err)
-    }
-	
+
+	PORT := ":8000"
+	fmt.Printf("Server running on http://localhost%s\n", PORT)
+
+	if err := http.ListenAndServe(PORT, nil); err != nil {
+		log.Fatalf("Failed to start server on %s: %v", PORT, err)
+	}
 }

@@ -14,7 +14,6 @@ type Error struct {
 func HandleError(w http.ResponseWriter, r *http.Request, error Error) {
 	tmpl, err := template.ParseFiles("views/errors/errors.html")
 	if err != nil {
-
 		fmt.Println(err.Error(), http.StatusInternalServerError)
 		return
 	}
