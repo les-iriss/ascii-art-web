@@ -40,12 +40,16 @@ func PostRequest(w http.ResponseWriter, r *http.Request) {
 	var data Data
 	data.Text = strings.ReplaceAll(r.FormValue("text"), "\r\n", "\\n")
 	data.Banner = r.FormValue("banner")
+	if data.Text == "" {
+		error.HandleError(w, r, error.Error{Code: 400, Message: "Bad request empty text! "})
+		return
+	}
 	if !banners[data.Banner] {
 		error.HandleError(w, r, error.Error{Code: 400, Message: "Bad request banner not found! "})
 		return
-	} else {
-		data.Result = fs.AsciiArtFs(data.Text, data.Banner)
-	}
+	} 
+
+	data.Result = fs.AsciiArtFs(data.Text, data.Banner)
 	executeTemplate(w, r, data)
 
 }
