@@ -21,63 +21,46 @@ var banners = map[string]bool{
 	"thinkertoy": true,
 }
 
-func RootHandler(w http.ResponseWriter, r *http.Request) {
-	var data Data
-	switch r.URL.Path {
-	case "/ascii-art":
-		if r.Method == "POST" {
-			postRequest(w, r, &data)
-		} else {
-			error.HandleError(w, r, error.Error{Code: 405, Message: "Method not allowed!"})
-		}
-		// getPage(w, &data)
-	case "/":
-		if r.Method == "GET" {
-			getPage(w, r, &data)
-		} else {
-			error.HandleError(w, r, error.Error{Code: 405, Message: "Method not allowed!"})
-		}
-	default:
-		error.HandleError(w, r, error.Error{Code: 404, Message: "Page not found!"})
+func executeTemplate(w http.ResponseWriter, r *http.Request, data interface{}) {
+	templates, err := template.ParseFiles("views/base.html", "views/form.html")
+	if err != nil {
+		error.HandleError(w, r, error.Error{Code: http.StatusInternalServerError, Message: err.Error()})
+	}
+	if err := templates.ExecuteTemplate(w, "base", data); err != nil {
+		error.HandleError(w, r, error.Error{Code: http.StatusInternalServerError, Message: err.Error()})
 	}
 }
 
-func postRequest(w http.ResponseWriter, r *http.Request, data *Data) {
-	tmpl, err := template.ParseFiles("views/base.html", "views/form.html")
-	if err != nil {
-		error.HandleError(w, r, error.Error{Code: 400, Message: "Bad request banner not found! "})
-
-		http.Error(w, err.Error(), http.StatusBadRequest)
+func PostRequest(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodPost {
+		error.HandleError(w, r, error.Error{Code: 405, Message: "Method not allowed!"})
 		return
 	}
+	var data Data
 	data.Text = strings.ReplaceAll(r.FormValue("text"), "\r\n", "\\n")
 	data.Banner = r.FormValue("banner")
+	if data.Text == "" {
+		error.HandleError(w, r, error.Error{Code: 400, Message: "Bad request empty text! "})
+		return
+	}
+	if len(data.Text) > 250 {
+		error.HandleError(w, r, error.Error{Code: 400, Message: "Bad request! You exceeded the length limit."})
+		return
+
+	}
 	if !banners[data.Banner] {
-		// data.Result = "Bad request banner not found! Error 400."
-		error.HandleError(w, r, error.Error{Code: 400, Message: "Bad request banner not found! "})
-		http.Error(w, "", http.StatusBadRequest)
-		return
-	} else {
-		data.Result = fs.AsciiArtFs(data.Text, data.Banner)
-	}
-	err = tmpl.ExecuteTemplate(w, "base", data)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		error.HandleError(w, r, error.Error{Code: 404, Message: "Bad request banner not found! "})
 		return
 	}
+
+	data.Result = fs.AsciiArtFs(data.Text, data.Banner)
+	executeTemplate(w, r, data)
 }
 
-func getPage(w http.ResponseWriter, r *http.Request, data *Data) {
-	tmpl, err := template.ParseFiles("views/base.html", "views/form.html")
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		error.HandleError(w, r, error.Error{Code: http.StatusInternalServerError, Message: err.Error()})
+func GetRequest(w http.ResponseWriter, r *http.Request) {
+	if r.Method != http.MethodGet {
+		error.HandleError(w, r, error.Error{Code: 405, Message: "Method not allowed!"})
 		return
 	}
-	err = tmpl.ExecuteTemplate(w, "base", data)
-	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
-		error.HandleError(w, r, error.Error{Code: http.StatusInternalServerError, Message: err.Error()})
-		return
-	}
+	executeTemplate(w, r, nil)
 }
