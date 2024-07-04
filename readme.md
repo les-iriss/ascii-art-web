@@ -26,3 +26,7 @@ Contributions to ASCII Art Web are welcome! If you have ideas for new features o
 - Special thanks to the creators of the ASCII art fonts used in this project.
 
 Enjoy creating ASCII art with ASCII Art Web!
+
+
+## 📊 Diagram
+![Diagram](diagrame.png)
