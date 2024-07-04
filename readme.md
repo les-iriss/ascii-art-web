@@ -6,7 +6,6 @@ ASCII Art Web is a web-based application that allows users to convert text into 
 ## Features
 - **Multiple Fonts**: Choose from a variety of fonts including "Thinkertoy" and "Standard" to stylize your text.
 - **Web Interface**: A user-friendly web interface that makes it easy to input text and see the ASCII art output.
-- **Customizable Output**: Options to customize the output, such as adjusting the width or adding additional effects.
 
 ## Getting Started
 To get started with ASCII Art Web, follow these steps:
@@ -18,14 +17,19 @@ To get started with ASCII Art Web, follow these steps:
 5. Enter the text you want to convert into ASCII art and select your preferred font and settings.
 6. Enjoy your ASCII art output!
 
-## Contributing
-Contributions to ASCII Art Web are welcome! If you have ideas for new features or improvements, feel free to fork the repository and submit a pull request.
+## Usage: How to Run
+To run the ASCII Art Web application locally, follow these steps:
 
-## Acknowledgments
-- Thanks to all contributors who have helped in building and enhancing this project.
-- Special thanks to the creators of the ASCII art fonts used in this project.
+1. **Clone the Repository:**
+   ```sh
+   git clone https://github.com/les-iriss/ascii-art-web.git
+   cd ascii-art-web
+   ```
+2. **Run Command:**
+    ```
+    go run .
+    ```
 
-Enjoy creating ASCII art with ASCII Art Web!
 
 
 ## 📊 Diagram
