@@ -11,18 +11,22 @@ type Error struct {
 	Code    int
 }
 
-func HandleError(w http.ResponseWriter, r *http.Request, error Error) {
+// error is a reserved name for golang , you can not use it as a variable
+func HandleError(w http.ResponseWriter, r *http.Request, er Error) {
 	tmpl, err := template.ParseFiles("views/errors/errors.html")
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		w.WriteHeader(http.StatusInternalServerError)
+		w.Write([]byte("Internal Server Error"))
 		fmt.Println(err.Error(), http.StatusInternalServerError)
 		return
 	}
-	err = tmpl.Execute(w, error)
+	// err = tmpl.Execute(w, error)
+	w.WriteHeader(er.Code)
+	err = tmpl.ExecuteTemplate(w, "error", er)
+	// mybe we have to use log, because using fmt with w.Write is not a good idea
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		w.Write([]byte("Internal Server Error"))
 		fmt.Println(err.Error(), http.StatusInternalServerError)
 		return
 	}
-	w.WriteHeader(error.Code)
 }
