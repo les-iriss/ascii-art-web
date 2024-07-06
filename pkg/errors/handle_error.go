@@ -24,4 +24,5 @@ func HandleError(w http.ResponseWriter, r *http.Request, error Error) {
 		fmt.Println(err.Error(), http.StatusInternalServerError)
 		return
 	}
+	w.WriteHeader(error.Code)
 }
