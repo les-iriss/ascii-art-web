@@ -33,23 +33,23 @@ func executeTemplate(w http.ResponseWriter, r *http.Request, data interface{}) {
 
 func PostRequest(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
-		error.HandleError(w, r, error.Error{Code: 405, Message: "Method not allowed!"})
+		error.HandleError(w, r, error.Error{Code: http.StatusMethodNotAllowed, Message: "Method not allowed!"})
 		return
 	}
 	var data Data
 	data.Text = strings.ReplaceAll(r.FormValue("text"), "\r\n", "\\n")
 	data.Banner = r.FormValue("banner")
 	if data.Text == "" {
-		error.HandleError(w, r, error.Error{Code: 400, Message: "Bad request empty text! "})
+		error.HandleError(w, r, error.Error{Code: http.StatusBadRequest, Message: "Bad request empty text! "})
 		return
 	}
 	if len(data.Text) > 250 {
-		error.HandleError(w, r, error.Error{Code: 400, Message: "Bad request! You exceeded the length limit."})
+		error.HandleError(w, r, error.Error{Code: http.StatusBadRequest, Message: "Bad request! You exceeded the length limit."})
 		return
 
 	}
 	if !banners[data.Banner] {
-		error.HandleError(w, r, error.Error{Code: 404, Message: "Bad request banner not found! "})
+		error.HandleError(w, r, error.Error{Code: http.StatusBadRequest, Message: "Bad request banner not found! "})
 		return
 	}
 
@@ -59,7 +59,7 @@ func PostRequest(w http.ResponseWriter, r *http.Request) {
 
 func GetRequest(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodGet {
-		error.HandleError(w, r, error.Error{Code: 405, Message: "Method not allowed!"})
+		error.HandleError(w, r, error.Error{Code: http.StatusMethodNotAllowed, Message: "Method not allowed!"})
 		return
 	}
 	executeTemplate(w, r, nil)
