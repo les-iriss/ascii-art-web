@@ -21,13 +21,14 @@ To get started with ASCII Art Web, follow these steps:
 ## Authors
 - **Yassine Rahhaoui** - [GitHub](https://github.com/yassinerahhaui)
 - **Ilyass Atlassi** - [GitHub](https://github.com/ilyassatlassi)
+- **Yassine Omari** - [GitHub](https://github.com/omaariii-123)
 
 ## Usage: How to Run
 To run the ASCII Art Web application locally, follow these steps:
 
 1. **Clone the Repository:**
    ```sh
-   git clone https://github.com/les-iriss/ascii-art-web.git
+   git clone https://learn.zone01oujda.ma/git/yrahhaou/ascii-art-web
    cd ascii-art-web
    ```
 2. **Run Command:**
