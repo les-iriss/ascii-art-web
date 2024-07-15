@@ -11,6 +11,7 @@ type Error struct {
 	Code    int
 }
 
+// HandleError sends an HTTP response with the specified error code and renders an error page using the provided error details.
 func HandleError(w http.ResponseWriter, r *http.Request, errType Error) {
 	w.WriteHeader(errType.Code)
 	tmpl, err := template.ParseFiles("views/errors/errors.html")

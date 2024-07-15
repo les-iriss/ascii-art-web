@@ -4,6 +4,7 @@ import (
 	"strings"
 )
 
+// SplitText splits the input text into a slice of strings, separating on occurrences of "\\n".
 func SplitText(text string) []string {
 	var words []string
 	new_text := text

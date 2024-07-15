@@ -1,7 +1,7 @@
 package fs
 
+// Writer generates ASCII art for the given words using the specified font.
 func Writer(words []string, font [][]string) string {
-
 	var result string
 	last_line := false
 	for _, word := range words {
