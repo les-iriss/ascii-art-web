@@ -17,8 +17,8 @@ h1 {
     min-width: max-content;
     padding: 20px;
     margin: 20px 0;
-    white-space: pre-wrap; /* Respect whitespace */
-    word-wrap: break-word; /* Break the word */
+    white-space: pre-wrap;
+    word-wrap: break-word;
 }
 hr {
     border: 0;
