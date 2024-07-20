@@ -12,7 +12,7 @@ func main() {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", controller.GetRequest)
 	mux.HandleFunc("/ascii-art", controller.PostRequest)
-	// mux.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("./static"))))
+	mux.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("./static"))))
 
 	PORT := ":8000"
 	fmt.Printf("Server running on http://localhost%s\n", PORT)
