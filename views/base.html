@@ -2,20 +2,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="static/style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="static/output.css" />
     <title>ascii-art-web</title>
 </head>
-<body>
-    <center>
-        <h1>ASCII-ART-WEB</h1>
-        <hr /><br />
-        {{ block "form" . }} {{ end }}
-    </center>
-    <br /><hr /><br />
-    <div class="banner">
-<pre>
+<body class="bg-gray-900 text-gray-200">
+    <div class="max-w-4xl mx-auto py-8 px-4">
+        <h1 class="text-4xl font-bold text-red-500 mb-4">Hello world!</h1>
+        <hr class="border-gray-700" />
+        <div class="my-8">
+            {{ block "form" . }} {{ end }}
+        </div>
+        <hr class="border-gray-700" />
+    </div>
+
+    <div class="max-w-4xl mx-auto py-8 px-4">
+        <pre class="bg-gray-800 p-4 rounded-lg overflow-auto">
 {{ .Result }}</pre>
     </div>
 </body>
