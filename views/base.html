@@ -4,23 +4,30 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="static/output.css" />
+    <link rel="stylesheet" href="static/style.css" />
     <title>ascii-art-web</title>
 </head>
-<body class="bg-gray-900 text-gray-200">
-    <div class="max-w-4xl mx-auto py-8 px-4">
-        <h1 class="text-4xl font-bold text-red-500 mb-4">Hello world!</h1>
-        <hr class="border-gray-700" />
-        <div class="my-8">
-            {{ block "form" . }} {{ end }}
+<body class="bg-gray-900 text-gray-200 min-h-screen ">
+    <header class="  bg-gray-800 p-4 ">
+        <h1 class=" Title text-4xl flex items-center justify-center font-bold text-blue-300 mb-4 absolute inset-0 m-auto">ASCII-ART-WEB</h1>
+    </header>
+    <main class="flex-grow">
+        <div class="max-w-4xl  mx-auto py-8 px-4">
+            <hr class="border-gray-700" />
+            <div class="my-8">
+                {{ block "form" . }} {{ end }}
+            </div>
+            <hr class="border-gray-700" />
         </div>
-        <hr class="border-gray-700" />
-    </div>
 
-    <div class="max-w-4xl mx-auto py-8 px-4">
-        <pre class="bg-gray-800 p-4 rounded-lg overflow-auto">
-{{ .Result }}</pre>
-    </div>
+        <div class="max-w-4xl mx-auto py-8 px-4">
+            <pre class="bg-gray-800 p-4 rounded-lg overflow-auto">
+    {{ .Result }}</pre>
+        </div>
+    </main>
+    <footer class="w-full bg-gray-800 p-4 text-center text-gray-500">
+        <p>© 2022 ASCII-ART-WEB. All rights reserved.</p>
+    </footer>
 </body>
 </html>
 {{ end }}

@@ -1,3 +1,23 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+
+body {
+    /* --tw-bg-opacity: 1; */
+    background-color:  #111827
+}
+
+header {
+    /* --tw-bg-opacity: 1; */
+    background-color: #1f2937;
+    padding: 1rem /* 16px */;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Title {
+    font-size: 2.25rem /* 36px */;
+    line-height: 2.5rem /* 40px */;
+    color: #93c5fd ;
+    /* position: absolute;
+    inset: 0;
+    margin: auto; */
+}
